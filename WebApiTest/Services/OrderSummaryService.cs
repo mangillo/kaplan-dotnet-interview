@@ -47,7 +47,8 @@ namespace WebApiTest.Services
                 summary.Totals.Tax = subTotal * TaxRate;
                 summary.Totals.Shipping = Shipping;
 
-                summary.OrderingPersonID = personIDs.Single();
+                summary.OrderingPersonID = order.OrderingPersonID; // we cannot use single() here as there are duplicate values and single() works only when there is exactly one element in sequence
+                                                                   // but why we are taking here personIds.First()?? since we want ordering person id , we are getting this from order only
 
                 summary.OrderPersonIDs = personIDs;
             }
